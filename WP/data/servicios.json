@@ -1,0 +1,54 @@
+[
+  {
+    "nombre": "Limpieza Facial",
+    "descripcion": "Tratamiento profundo que elimina impurezas, puntos negros y mejora la textura de la piel.",
+    "imagenes": [
+      "assets/img/LimpiezaFacial1.png",
+      "assets/img/limpiezaFacial2.jpg"
+    ]
+  },
+  {
+    "nombre": "Micro aguja facial",
+    "descripcion": "Técnica que estimula la producción de colágeno para rejuvenecer la piel.",
+    "imagenes": [
+      "assets/img/micro1.png",
+      "assets/img/micro2.jpg"
+    ]
+  },
+  {
+    "nombre": "Extensiones de pestañas",
+    "descripcion": "Aplicación de extensiones que dan volumen, longitud y definición a tu mirada.",
+    "imagenes": [
+      "assets/img/Pestanas1.jpeg",
+      "assets/img/Pestanas2.jpeg",
+      "assets/img/Pestanas3.jpeg"
+    ]
+  },
+  {
+    "nombre": "Maquillaje Social",
+    "descripcion": "Maquillaje profesional para eventos, fiestas o cualquier ocasión especial.",
+    "imagenes": [
+      "assets/img/Maquillaje1.jpeg",
+      "assets/img/Maquillaje2.jpeg",
+      "assets/img/Maquillaje3.jpeg"
+    ]
+  },
+  {
+    "nombre": "Masajes",
+    "descripcion": "Terapias relajantes que ayudan a liberar el estrés y mejorar el bienestar.",
+    "imagenes": [
+      "assets/img/masajes.jpeg",
+      "assets/img/masajes2.jpeg"
+    ]
+  },
+  {
+    "nombre": "Hidragloss",
+    "descripcion": "Tratamiento para rejuvenecer e hidratar los labios.",
+    "imagenes": [
+      "assets/img/labios.jpeg",
+      "assets/img/labios1.jpeg",
+      "assets/img/labios2.jpeg",
+      "assets/img/labios3.jpg"
+    ]
+  }
+]

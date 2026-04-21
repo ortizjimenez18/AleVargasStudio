@@ -1,0 +1,17 @@
+[
+  {
+    "titulo": "Promoción del Mes",
+    "descripcion": "20% de descuento en extensiones de pestañas durante todo el mes.",
+    "imagen": "assets/img/Pestanas1.jpeg"
+  },
+  {
+    "titulo": "Nuevo Tratamiento",
+    "descripcion": "Prueba nuestro nuevo Hydragloss para labios hidratados y brillantes.",
+    "imagen": "assets/img/labios.jpeg"
+  },
+  {
+    "titulo": "Combo Especial",
+    "descripcion": "Limpieza facial + masaje relajante con precio especial.",
+    "imagen": "assets/img/masajes.jpeg"
+  }
+]

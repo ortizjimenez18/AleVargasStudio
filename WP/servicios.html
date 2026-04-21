@@ -1,0 +1,190 @@
+<!DOCTYPE html> <!-- Define documento HTML5 -->
+<html lang="es"> <!-- Idioma del sitio -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Soporte para acentos y caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive -->
+
+    <title>Servicios - Ale Vargas Studio</title> <!-- Título de la pestaña -->
+
+    <!-- Bootstrap (estilos base) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Iconos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+   <!-- NAVBAR fija -->
+    <nav class="navbar navbar-expand-lg shadow fixed-top">
+        <div class="container">
+
+            <!-- Logo + nombre -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center fw-bold">
+                <img id="logoNav" style="height:40px; width:auto; margin-right:10px;"> <!-- Logo dinámico -->
+                Ale Vargas Studio
+            </a>
+
+            <!-- Audio de fondo -->
+            <audio autoplay loop id="musica">
+                <source src="assets/audio/musica.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- Botón hamburguesa (mobile) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú -->
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto text-center">
+                    <!-- Links -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="acercade.html">Acerca De</a></li>
+                    <li class="nav-item"><a class="nav-link" href="autores.html">Autores</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="container py-5 servicios-section">
+        <!-- Título -->
+        <h2 class="text-center mb-5 services-title animate-title">
+            Nuestros Servicios
+        </h2>
+
+        <!-- Contenedor dinámico donde se cargan servicios desde JSON -->
+        <div class="services-carousel" id="contenedorServicios"></div>
+
+        <!-- Indicador visual del carrusel -->
+        <div class="carousel-indicator">
+            <div class="carousel-bar"></div>
+        </div>
+    </section>
+
+    <!-- BOTÓN VOLVER -->
+    <div class="text-center volver-btn">
+        <a href="index.html" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+
+    <!-- JS Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SCRIPT: carrusel automático de imágenes -->
+    <script>
+        const carousels = document.querySelectorAll('.card-carousel'); // Selecciona todos los carruseles
+
+        carousels.forEach(carousel => {
+            const images = carousel.querySelectorAll('img'); // Obtiene imágenes dentro del carrusel
+
+            if (images.length <= 1) return; // Si solo hay una imagen, no hace nada
+
+            let index = 0; // Índice inicial
+
+            setInterval(() => {
+                index = (index + 1) % images.length; // Avanza en loop
+
+                carousel.scrollTo({
+                    left: carousel.clientWidth * index, // Desplaza horizontalmente
+                    behavior: 'smooth' // Animación suave
+                });
+            }, 3000); // Cada 3 segundos
+        });
+    </script>
+
+    <!-- Archivo JS externo -->
+    <script src="js/servicios.js"></script>
+
+    </script> <!-- ⚠️ Este cierre está extra (no hace nada, pero tampoco rompe todo) -->
+
+    <!-- Bootstrap otra vez (innecesario duplicado, pero no lo toco como pediste) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SCRIPT: cargar servicios desde JSON -->
+    <script>
+function cargarServicios() {
+
+    // Llamada al archivo JSON local
+    fetch('data/servicios.json')
+    .then(response => response.json()) // Convierte a objeto JS
+    .then(data => {
+
+        let contenedor = document.getElementById("contenedorServicios"); // Contenedor principal
+        contenedor.innerHTML = ""; // Limpia contenido previo
+
+        // Recorre cada servicio del JSON
+        data.forEach(servicio => {
+
+            let imagenesHTML = ""; // Variable para imágenes
+
+            // Genera HTML de imágenes
+            servicio.imagenes.forEach(img => {
+                imagenesHTML += `<img src="${img}">`;
+            });
+
+            // Inserta cada tarjeta en el contenedor
+            contenedor.innerHTML += `
+                <div class="service-card">
+                    <div class="card-carousel">
+                        ${imagenesHTML} <!-- Imágenes dinámicas -->
+                    </div>
+                    <div class="card-content">
+                        <h3>${servicio.nombre}</h3> <!-- Nombre -->
+                        <p>${servicio.descripcion}</p> <!-- Descripción -->
+                    </div>
+                </div>
+            `;
+        });
+
+        // Inicializa funciones externas (carrusel + barra)
+        iniciarCarruseles();
+        iniciarIndicador();
+
+    })
+    .catch(error => console.error("Error:", error)); // Manejo de errores
+}
+
+// Ejecuta la función al cargar
+cargarServicios();
+</script>
+
+</body>
+
+<!-- FOOTER -->
+<footer class="footer-glass text-center">
+
+    <div class="container">
+
+        <p class="footer-brand">Ale Vargas Studio</p> <!-- Nombre -->
+        <p class="footer-copy">© 2026 Ale Vargas Studio. Todos los derechos reservados.</p> <!-- Copyright -->
+
+        <div class="social-icons">
+
+            <!-- WhatsApp -->
+            <a href="https://api.whatsapp.com/send/?phone=86321517&text&type=phone_number&app_absent=0" target="_blank"
+                class="social-icon whatsapp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/alevargas_studio/" target="_blank" class="social-icon instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</html>
