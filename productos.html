@@ -1,0 +1,242 @@
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+<html lang="es"> <!-- Idioma de la página -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Soporte para caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive para móviles -->
+
+    <title>Productos - Ale Vargas Studio</title> <!-- Título de la pestaña -->
+
+    <!-- Bootstrap (framework de estilos y layout) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Iconos de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR (barra de navegación fija arriba) -->
+    <nav class="navbar navbar-expand-lg shadow fixed-top">
+        <div class="container">
+
+            <!-- Logo + nombre clickeable -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center fw-bold">
+                <img id="logoNav" style="height:40px; width:auto; margin-right:10px;"> <!-- Logo dinámico -->
+                Ale Vargas Studio
+            </a>
+
+            <!-- Audio de fondo -->
+            <audio autoplay loop id="musica">
+                <source src="assets/audio/musica.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- Botón hamburguesa para móvil -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú colapsable -->
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto text-center">
+                    <!-- Links de navegación -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li> <!-- Página actual -->
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="acercade.html">Acerca De</a></li>
+                    <li class="nav-item"><a class="nav-link" href="autores.html">Autores</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Espacio para que el navbar fijo no tape el contenido -->
+    <div style="margin-top: 100px;"></div>
+
+    <!-- SECCIÓN DE PRODUCTOS -->
+    <section class="container py-5">
+        <h2 class="text-center mb-5">Nuestros Productos</h2>
+
+        <!-- Contenedor donde se cargan productos desde JSON -->
+        <div id="contenedorProductos" class="row g-4 justify-content-center"></div>
+    </section>
+
+    <!-- MODAL DE VERIFICACIÓN DE EDAD -->
+    <div class="modal fade" id="modalEdad" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <!-- data-bs-backdrop="static" evita cerrar haciendo click afuera -->
+        <!-- data-bs-keyboard="false" evita cerrar con ESC -->
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-3">
+
+                <h4 class="mb-3">Verificación de edad</h4>
+                <p>Debes ser mayor de 18 años para continuar.</p>
+
+                <!-- Input de fecha -->
+                <div class="mb-3">
+                    <label class="form-label">Fecha de nacimiento</label>
+                    <input type="date" id="fechaNacimiento" class="form-control">
+                </div>
+
+                <!-- Botón que ejecuta la función verificarEdad -->
+                <button class="btn btn-primary w-100" onclick="verificarEdad()">
+                    Confirmar
+                </button>
+
+                <!-- Mensaje de error -->
+                <p id="mensajeEdad" class="text-danger mt-2"></p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JS de Bootstrap (necesario para modales y navbar) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<   <!-- ERROR: hay un "<" suelto aquí que rompe el HTML -->
+
+    <script>
+        // Mostrar modal al cargar si el usuario no ha validado edad
+        document.addEventListener("DOMContentLoaded", function () {
+
+            let acceso = localStorage.getItem("acceso18"); // lee si ya pasó validación
+
+            if (acceso !== "true") {
+                let modal = new bootstrap.Modal(document.getElementById('modalEdad'));
+                modal.show(); // abre el modal
+            }
+        });
+
+        function verificarEdad() {
+
+            let fecha = document.getElementById("fechaNacimiento").value; // obtiene fecha
+            let mensaje = document.getElementById("mensajeEdad"); // mensaje UI
+
+            if (!fecha) {
+                mensaje.textContent = "Debes ingresar tu fecha de nacimiento";
+                return;
+            }
+
+            let hoy = new Date();
+            let nacimiento = new Date(fecha);
+
+            // cálculo de edad
+            let edad = hoy.getFullYear() - nacimiento.getFullYear();
+            let m = hoy.getMonth() - nacimiento.getMonth();
+
+            if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+                edad--;
+            }
+
+            if (edad >= 18) {
+
+                localStorage.setItem("acceso18", "true"); // guarda acceso
+
+                let modal = bootstrap.Modal.getInstance(document.getElementById('modalEdad'));
+                modal.hide(); // cierra modal
+
+            } else {
+
+                mensaje.textContent = "No eres mayor de edad. Redirigiendo...";
+
+                // redirige después de 2 segundos
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 2000);
+            }
+        }
+
+    </script>
+
+    <!-- jQuery (usado para manipular DOM más fácil) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Espera a que cargue el DOM
+        $(document).ready(function () {
+
+            // Carga productos desde JSON
+            fetch('data/productos.json')
+                .then(res => res.json())
+                .then(data => {
+
+                    let contenedor = $("#contenedorProductos");
+                    contenedor.html(""); // limpia contenido
+
+                    // Recorre cada producto
+                    data.forEach(p => {
+
+                        // Inserta HTML dinámico
+                        contenedor.append(`
+                <div class="col-md-4 col-lg-3">
+                    <div class="card shadow text-center p-3 h-100 d-flex flex-column">
+
+                        <!-- Imagen del producto -->
+                        <img src="${p.imagen}" 
+                             class="img-fluid mb-3"
+                             style="height:200px; object-fit:cover; border-radius:10px;">
+
+                        <!-- Nombre -->
+                        <h5>${p.nombre}</h5>
+
+                        <!-- Precio -->
+                        <p class="precio-producto fw-bold"">${p.precio}</p>
+
+                        <!-- Botón de compra vía WhatsApp -->
+                        <a href="https://wa.me/50686321517?text=Hola,%20quiero%20información%20del%20producto:%20${encodeURIComponent(p.nombre)}"
+                           target="_blank"
+                           class="btn btn-primary mt-auto">
+                           Comprar
+                        </a>
+
+                    </div>
+                </div>
+            `);
+                    });
+
+                })
+                .catch(error => console.error("Error cargando productos:", error));
+
+        });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="footer-glass text-center">
+
+        <div class="container">
+
+            <!-- Nombre de la marca -->
+            <p class="footer-brand">Ale Vargas Studio</p>
+
+            <!-- Copyright -->
+            <p class="footer-copy">© 2026 Ale Vargas Studio. Todos los derechos reservados.</p>
+
+            <!-- Iconos sociales -->
+            <div class="social-icons">
+
+                <!-- WhatsApp -->
+                <a href="https://api.whatsapp.com/send/?phone=86321517" target="_blank" class="social-icon whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/alevargas_studio/" target="_blank" class="social-icon instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

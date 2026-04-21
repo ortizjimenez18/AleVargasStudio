@@ -1,0 +1,139 @@
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+<html lang="en"> <!-- Idioma del documento (aunque aquí está en inglés, tu contenido es español) -->
+
+<head>
+  <meta charset="UTF-8"> <!-- Permite caracteres especiales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace el diseño responsive -->
+  <title>Acerca De - Ale Vargas Studio</title> <!-- Título de la pestaña -->
+
+  <!-- Bootstrap: framework CSS para estilos y layout -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Librería de iconos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+   <!-- NAVBAR: barra de navegación -->
+    <nav class="navbar navbar-expand-lg shadow fixed-top">
+        <div class="container">
+
+            <!-- LOGO + NOMBRE clickeable -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center fw-bold">
+                <img id="logoNav" style="height:40px; width:auto; margin-right:10px;"> <!-- Logo dinámico -->
+                Ale Vargas Studio
+            </a>
+
+            <!-- Audio de fondo -->
+            <audio autoplay loop id="musica">
+                <source src="assets/audio/musica.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- BOTÓN para menú en móvil -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENÚ de navegación -->
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto text-center">
+                    <!-- Links a otras páginas -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="acercade.html">Acerca De</a></li>
+                    <li class="nav-item"><a class="nav-link" href="autores.html">Autores</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+  <!-- CONTENEDOR principal con fondo personalizado -->
+  <div class="ulta-container">
+
+    <!-- Tarjeta visual que contiene todo el contenido -->
+    <div class="ulta-card">
+
+      <!-- Contenido interno -->
+      <div class="ulta-content">
+
+        <!-- Título principal -->
+        <h2 class="ulta-title">Mi Camino en la Estética: Del Aprendizaje a la Independencia</h2>
+
+        <!-- Texto largo descriptivo (historia del negocio) -->
+        <p class="ulta-text">
+          <!-- Historia profesional -->
+          Mi historia en el mundo de la belleza comenzó en el 2013, cuando decidí inscribirme en el Instituto de
+          Formación Estética (IFE). Me tomó cerca de dos años completar toda la carrera y, para finales de 2015,
+          mientras realizaba mis pruebas de grado, logré conseguir mi primer empleo en una estética. Allí pasé seis años
+          ganando experiencia y realizando todo tipo de servicios, tanto faciales como corporales.
+          A finales de esa etapa, me surgió una oportunidad para trabajar como asistente de una dermatóloga. Durante un
+          tiempo, decidí llevar las dos cosas a la vez: trabajaba medio tiempo en el consultorio y el otro medio tiempo
+          empecé a trabajar por mi cuenta. Debo confesar que me daba un poco de susto la idea de tener un proyecto sola
+          y que todo dependiera únicamente de mí, pero sentía que era el momento de intentarlo.
+          Esa transición ocurrió cerca del 2022, y para marzo de 2023, tomé la decisión definitiva de independizarme al
+          100%. Al principio, mi enfoque eran exclusivamente los servicios a domicilio. Sin embargo, poco a poco fui
+          armando mi propia cabina, lo que hoy me permite ofrecer ambos servicios: atención personalizada en mi espacio
+          o en la comodidad de la casa de mis clientes.
+          Desde ese marzo de 2023 hasta el día de hoy, me mantengo firme como independiente. Mi compromiso es nunca
+          dejar de aprender; por eso, además de actualizarme constantemente, me propongo el reto de introducir al menos
+          un servicio nuevo cada año para seguir creciendo y ofreciendo lo mejor.
+        </p>
+
+        <!-- Contenedor donde JS insertará imágenes dinámicamente -->
+        <div id="galeria" class="mt-4 row"></div>
+
+      </div>
+
+      <!-- BOTÓN para volver al inicio -->
+      <div class="text-center mb-5">
+        <a href="index.html" class="btn btn-primary">Volver al Inicio</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER: pie de página -->
+  <footer class="footer-glass text-center">
+
+    <div class="container">
+
+      <!-- Nombre de la marca -->
+      <p class="footer-brand">Ale Vargas Studio</p>
+
+      <!-- Derechos de autor -->
+      <p class="footer-copy">© 2026 Ale Vargas Studio. Todos los derechos reservados.</p>
+
+      <!-- Redes sociales -->
+      <div class="social-icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=86321517&text&type=phone_number&app_absent=0" target="_blank"
+          class="social-icon whatsapp">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/alevargas_studio/" target="_blank" class="social-icon instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- Script JS que probablemente carga la galería dinámica -->
+  <script src="js/acercade.js"></script>
+
+</body>
+
+</html>
