@@ -1,0 +1,23 @@
+{
+  "navbar": {
+    "logo": "assets/img/logoAV.jpeg"
+  },
+
+  "hero": [
+    "assets/img/inicioAV.jpeg",
+    "assets/img/inicioAV2.jpeg",
+    "assets/img/inicioAV3.jpeg"
+  ],
+
+  "galeria": [
+    "assets/img/AV1.jpeg",
+    "assets/img/AV2.jpeg",
+    "assets/img/AV6.jpeg"
+  ],
+  "reviews":[
+    "assets/img/cliente1.jpeg",
+    "assets/img/cliente2.jpg",
+    "assets/img/cliente3.jpg"
+  ]
+
+}

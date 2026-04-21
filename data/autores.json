@@ -1,0 +1,20 @@
+{
+  "autores": [
+    {
+      "nombre": "Maria Paula Murillo",
+      "rol": "Desarrolladora Web",
+      "cedula": "208300740",
+      "email": "murillorosalesmariapaula@gmail.com",
+      "instagram": "https://instagram.com/maripaumr_",
+      "imagen": "assets/img/paula.jpg"
+    },
+    {
+      "nombre": "Sebastian Ortiz",
+      "rol": "Desarrollador Web",
+      "cedula": "208670975",
+      "email": "sortizjimenez18@gmail.com",
+      "instagram": "https://instagram.com/ortizjimenez_18",
+      "imagen": "assets/img/sebastian.jpeg"
+    }
+  ]
+}
