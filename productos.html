@@ -19,33 +19,33 @@
 
 <body>
 
-    <!-- NAVBAR (barra de navegación fija arriba) -->
+   <!-- Audio automático en loop -->
+    <audio autoplay loop id="musica">
+        <source src="assets/audio/musica.mp3" type="audio/mpeg"> <!-- Archivo de audio -->
+    </audio>
+
+    <!-- NAVBAR fija arriba -->
     <nav class="navbar navbar-expand-lg shadow fixed-top">
         <div class="container">
 
-            <!-- Logo + nombre clickeable -->
+            <!-- Logo + nombre -->
             <a href="index.html" class="navbar-brand d-flex align-items-center fw-bold">
                 <img id="logoNav" style="height:40px; width:auto; margin-right:10px;"> <!-- Logo dinámico -->
                 Ale Vargas Studio
             </a>
 
-            <!-- Audio de fondo -->
-            <audio autoplay loop id="musica">
-                <source src="assets/audio/musica.mp3" type="audio/mpeg">
-            </audio>
-
-            <!-- Botón hamburguesa para móvil -->
+            <!-- Botón hamburguesa (móvil) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Menú colapsable -->
+            <!-- Menú de navegación -->
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto text-center">
-                    <!-- Links de navegación -->
+                    <!-- Links a páginas -->
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li> <!-- Página actual -->
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                     <li class="nav-item"><a class="nav-link" href="acercade.html">Acerca De</a></li>
